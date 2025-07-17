@@ -1,0 +1,158 @@
+.cartPage {
+  padding: 80px 2rem 3rem;
+  background: #f9fafb;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1f2937;
+  animation: fadeInDown 0.5s ease-out;
+}
+
+.empty {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #6b7280;
+}
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.cartItem {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.image {
+  width: 120px;
+  height: 120px;
+  border-radius: 0.75rem;
+  object-fit: cover;
+}
+
+.details {
+  flex: 1;
+}
+
+.name {
+    max-width: 700px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.3rem;
+}
+
+.description {
+  max-width: 700px;  
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.price {
+  margin: 0.5rem 0;
+  font-weight: 500;
+  color: #374151;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quantityControls button {
+  background: #e11d48;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.quantityControls button:hover {
+  background: #be123c;
+}
+
+.remove {
+  background: #f87171;
+  margin-left: auto;
+}
+
+.subtotal {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.summary {
+  text-align: right;
+  margin-top: 2rem;
+  animation: fadeInUp 0.5s ease;
+}
+
+.summary h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.buyNow {
+  background: linear-gradient(135deg, #e11d48, #f59e0b);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.buyNow:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 5px 15px rgba(225, 29, 72, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cartItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .summary {
+    text-align: center;
+  }
+}

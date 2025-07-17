@@ -1,0 +1,381 @@
+/* Navbar Container */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideDown 0.6s ease-out;
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+/* Logo Section */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+.logoIcon {
+  width: 32px;
+  height: 32px;
+  color: #e11d48;
+  animation: pulse 2s infinite;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.brandName {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #1f2937, #4f46e5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* Navigation Links */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.navLink {
+  position: relative;
+  text-decoration: none;
+  color: #374151;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.navLink span {
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.navLink::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #e11d48, #f59e0b);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(225, 29, 72, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.navLink:hover::before {
+  width: 100%;
+}
+
+.navLink:hover::after {
+  left: 100%;
+}
+
+.navLink:hover span {
+  color: #e11d48;
+  transform: translateY(-2px);
+}
+
+/* Right Section */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: fadeInRight 0.8s ease-out 0.4s both;
+}
+
+.cartButton {
+  position: relative;
+  background: linear-gradient(135deg, #e11d48, #f59e0b);
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3);
+}
+
+.cartButton:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(225, 29, 72, 0.4);
+}
+
+.cartButton:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.cartIcon {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #f59e0b;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 50px;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounce 0.6s ease-out;
+}
+
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #374151;
+  transition: all 0.3s ease;
+}
+
+.mobileMenuButton:hover {
+  color: #e11d48;
+  transform: scale(1.1);
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.mobileMenuOpen {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileNavLink {
+  display: block;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  color: #374151;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.mobileNavLink::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(225, 29, 72, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.mobileNavLink:hover {
+  color: #e11d48;
+  background: rgba(225, 29, 72, 0.05);
+  padding-left: 2rem;
+}
+
+.mobileNavLink:hover::before {
+  left: 100%;
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+    height: 60px;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: block;
+  }
+
+  .logo {
+    gap: 0.5rem;
+  }
+
+  .logoIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .brandName {
+    font-size: 1.1rem;
+  }
+
+  .tagline {
+    font-size: 0.7rem;
+  }
+
+  .cartButton {
+    padding: 0.6rem;
+  }
+
+  .cartIcon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    height: 55px;
+  }
+
+  .brandName {
+    font-size: 1rem;
+  }
+
+  .tagline {
+    font-size: 0.65rem;
+  }
+
+  .logoIcon {
+    width: 24px;
+    height: 24px;
+  }
+}
